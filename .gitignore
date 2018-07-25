@@ -1,0 +1,15 @@
+/node_modules
+/public/storage
+/public/assets/file/survey
+/public/assets/file/zip
+/storage/*.key
+/storage/*
+/bootdo/.idea
+/bootdo/.idea/workspace.xml
+.idea/
+*/workspace.xml
+Homestead.json
+Homestead.yaml
+.env
+/nbproject
+.project
