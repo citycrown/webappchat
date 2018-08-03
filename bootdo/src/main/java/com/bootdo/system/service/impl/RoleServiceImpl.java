@@ -1,9 +1,6 @@
 package com.bootdo.system.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -51,7 +48,7 @@ public class RoleServiceImpl implements RoleService {
 		for (RoleDO roleDO : roles) {
 			roleDO.setRoleSign("false");
 			for (Long roleId : rolesIds) {
-				if (roleDO.getRoleId() == roleId) {
+				if (Objects.equals(roleDO.getRoleId(), roleId)) {
 					roleDO.setRoleSign("true");
 					break;
 				}

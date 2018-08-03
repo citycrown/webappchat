@@ -32,7 +32,7 @@ public class RandomString {
 	public static void main(String[] args) {
 		Set<String> check = new HashSet<String>();
 		RandomString obj = new RandomString();
-		System.out.println(obj.generateRandomString(16));
+		System.out.println(generateRandomString(16));
 		//生成2000000个随机字符串，检查是否出现重复
 //		for (int i = 0; i < 2000000; i++) {
 //			String s = obj.generateRandomString(16);

@@ -130,7 +130,8 @@ public class Wap1PersonController {
 		}
 	 // 自定义比较器：按销售情况排序  
 	    static class SellHitComparator implements Comparator {  
-	        public int compare(Object object1, Object object2) {// 实现接口中的方法  
+	        @Override
+			public int compare(Object object1, Object object2) {// 实现接口中的方法
 	        	TGoodsDO p1 = (TGoodsDO) object1; // 强制转换
 				TGoodsDO p2 = (TGoodsDO) object2;
 	            return p2.getSellhit().compareTo(p1.getSellhit());  
@@ -139,7 +140,8 @@ public class Wap1PersonController {
 	  
 	    // 自定义比较器：按书出版时间来排序  
 	    static class CalendarComparator implements Comparator {  
-	        public int compare(Object object1, Object object2) {// 实现接口中的方法  
+	        @Override
+			public int compare(Object object1, Object object2) {// 实现接口中的方法
 				TGoodsDO p1 = (TGoodsDO) object1; // 强制转换
 				TGoodsDO p2 = (TGoodsDO) object2;
 	            return p2.getCreateDate().compareTo(p1.getCreateDate());  
