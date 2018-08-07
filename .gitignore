@@ -13,3 +13,5 @@ Homestead.yaml
 .env
 /nbproject
 .project
+/bootdo/.idea/libraries
+libraries
