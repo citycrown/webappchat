@@ -43,7 +43,7 @@ public class LoginController extends BaseController {
 		List<Tree<MenuDO>> menus = menuService.listMenuTree(getUserId());
 		model.addAttribute("menus", menus);
 		model.addAttribute("name", getUser().getName());
-		logger.info(getUser().getName());
+		logger.info(getUser().getName() + "------");
 		return "index_v1";
 	}
 

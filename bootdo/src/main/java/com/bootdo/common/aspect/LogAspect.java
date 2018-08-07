@@ -22,12 +22,17 @@ import com.bootdo.common.utils.JSONUtils;
 import com.bootdo.common.utils.ShiroUtils;
 import com.bootdo.system.domain.UserDO;
 
+/**
+ * 日志切面类
+ */
+
 @Aspect
 @Component
 public class LogAspect {
 	@Autowired
 	LogDao logMapper;
 
+	// 指定切点
 	@Pointcut("@annotation(com.bootdo.common.annotation.Log)")
 	public void logPointCut() {
 	}
@@ -89,6 +94,6 @@ public class LogAspect {
 		Date date = new Date();
 		sysLog.setGmtCreate(date);
 		// 保存系统日志
-	//	logMapper.save(sysLog);
+	    logMapper.save(sysLog);
 	}
 }
