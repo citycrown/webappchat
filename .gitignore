@@ -6,7 +6,7 @@
 /storage/*
 /bootdo/.idea
 /bootdo/.idea/workspace.xml
-.idea/
+*/.idea/*
 */workspace.xml
 Homestead.json
 Homestead.yaml
