@@ -1,18 +1,16 @@
-package com.bootdo.advert.dao;
+package com.bootdo.advert.service;
 
 import com.bootdo.advert.domain.AdvertDO;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 广告
+ * 广告管理
  * <p>
  *
  * @author ：陈冕
  * @version : 1.0.0
- * @date : 2018/8/7
+ * @date : 2018/8/8
  */
-@Mapper
-public interface AdvertDao {
+public interface AdvertService {
 
     /**
      * 根据id查询
