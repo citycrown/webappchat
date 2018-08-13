@@ -1,13 +1,10 @@
 package com.bootdo.advert.controller;
 
-import com.bootdo.advert.domain.AdvertDO;
 import com.bootdo.advert.service.AdvertService;
 import com.bootdo.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 /**
  * 广告管理
@@ -25,9 +22,15 @@ public class AdvertController {
     @Autowired
     private AdvertService advertService;
 
-    @RequestBody
+    /**
+     * 广告详情
+     *
+     * @param advertId 广告id
+     * @return
+     */
+    @ResponseBody
     @GetMapping("/info")
-    public AdvertDO getAdvertInfo(@PathVariable("advertId") Long advertId){
-        return advertService.getById(advertId);
+    public R getAdvertInfo(@PathVariable("advertId") Long advertId){
+        return R.ok().put("data",advertService.getById(advertId));
     }
 }
