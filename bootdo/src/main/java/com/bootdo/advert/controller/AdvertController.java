@@ -25,9 +25,18 @@ public class AdvertController {
     @Autowired
     private AdvertService advertService;
 
-    @RequestBody
+    @ResponseBody
+    @GetMapping("/index")
+    public R index(){
+        AdvertDO advertDO = advertService.getById(75L);
+        return R.ok().put("taskScheduleJob", advertDO);
+    }
+
+
+    @ResponseBody
     @GetMapping("/info")
-    public AdvertDO getAdvertInfo(@PathVariable("advertId") Long advertId){
-        return advertService.getById(advertId);
+    public R getAdvertInfo(@PathVariable("advertId") Long advertId){
+        AdvertDO advertDO = advertService.getById(advertId);
+        return R.ok().put("taskScheduleJob", advertDO);
     }
 }

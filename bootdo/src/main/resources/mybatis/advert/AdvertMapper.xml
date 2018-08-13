@@ -2,9 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bootdo.advert.dao.AdvertDao">
-    <select id="getById" resultType="com.bootdo.advert.domain.AdvertDO">
+    <!--<select id="getById" resultType="com.bootdo.advert.domain.AdvertDO">
         select *
         from mkt_advert
         where advert_id = #{value}
+    </select>-->
+    <select id="getById" resultType="com.bootdo.advert.domain.AdvertDO">
+        select *
+        from b_content
+        where cid = 75
     </select>
 </mapper>

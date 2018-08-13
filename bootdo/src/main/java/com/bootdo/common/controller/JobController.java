@@ -68,7 +68,7 @@ public class JobController extends BaseController{
 	/**
 	 * 信息
 	 */
-	@RequestMapping("/info/{id}")
+	@GetMapping("/info/{id}")
 	public R info(@PathVariable("id") Long id) {
 		TaskDO taskScheduleJob = taskScheduleJobService.get(id);
 		return R.ok().put("taskScheduleJob", taskScheduleJob);
