@@ -6,6 +6,9 @@ import com.bootdo.advert.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 广告管理
  * <p>
@@ -23,6 +26,16 @@ public class AdvertServiceImpl implements AdvertService {
     @Override
     public AdvertDO getById(Long cid){
         return advertMapper.getById(cid);
+    }
+
+    @Override
+    public List<AdvertDO> list (Map<String, Object> map){
+        return advertMapper.list(map);
+    }
+
+    @Override
+    public int count(Map<String, Object> map){
+        return advertMapper.count(map);
     }
 
 }

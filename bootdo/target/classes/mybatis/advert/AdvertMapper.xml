@@ -2,14 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bootdo.advert.dao.AdvertDao">
-    <!--<select id="getById" resultType="com.bootdo.advert.domain.AdvertDO">
+    <select id="getById" resultType="com.bootdo.advert.domain.AdvertDO">
         select *
         from mkt_advert
         where advert_id = #{value}
-    </select>-->
-    <select id="getById" resultType="com.bootdo.advert.domain.AdvertDO">
-        select *
-        from b_content
-        where cid = 75
+    </select>
+
+    <select id="list" resultType="com.bootdo.advert.domain.AdvertDO">
+        select * from mkt_advert
+        <where>
+            <if test="status != null and status != ''"> and status = #{status} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by advert_id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from mkt_advert
+        <where>
+            <if test="status != null and status != ''"> and status = #{status} </if>
+        </where>
     </select>
 </mapper>
