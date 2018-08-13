@@ -28,6 +28,7 @@ public class UserRealm extends AuthorizingRealm {
 	@Autowired
 	MenuService menuService;
 
+	// 授权
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
 		Long userId = ShiroUtils.getUserId();
@@ -37,6 +38,7 @@ public class UserRealm extends AuthorizingRealm {
 		return info;
 	}
 
+	// 认证登陆
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username = (String) token.getPrincipal();
@@ -61,7 +63,7 @@ public class UserRealm extends AuthorizingRealm {
 		if (user.getStatus() == 0) {
 			throw new LockedAccountException("账号已被锁定,请联系管理员");
 		}
-		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
+		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, this.getClass().getName());
 		return info;
 	}
 
