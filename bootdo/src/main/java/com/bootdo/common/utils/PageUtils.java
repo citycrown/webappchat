@@ -14,14 +14,8 @@ public class PageUtils implements Serializable {
 
 	/**
 	 * 分页
-	 * 
-	 * @param list
-	 *            列表数据
-
-	 * @param total
-	 *            每页记录数
-	 * @param list
-	 *            当前页数
+	 * @param total 总记录数
+	 * @param list  列表数据
 	 */
 	public PageUtils(List<?> list, int total) {
 		this.rows = list;
