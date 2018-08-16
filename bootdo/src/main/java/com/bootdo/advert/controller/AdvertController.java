@@ -5,6 +5,7 @@ import com.bootdo.advert.service.AdvertService;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
+import com.bootdo.common.utils.RestResult;
 import com.bootdo.shop.domain.TGoodsDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,20 @@ public class AdvertController {
     private AdvertService advertService;
 
     @ResponseBody
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    public RestResult<AdvertDO> test(){
+        AdvertDO advertDO = advertService.getById(1L);
+
+        RestResult restResult = new RestResult();
+        restResult.setCode(200);
+        restResult.setData(advertDO);
+        return restResult;
+    }
+
+    @ResponseBody
     @GetMapping("/index")
     public R index(){
+
         AdvertDO advertDO = advertService.getById(1L);
         return R.ok().put("data", advertDO);
     }
