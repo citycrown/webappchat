@@ -51,4 +51,24 @@ public class RestResult<T> implements Serializable {
     public void setData(T data) {
         this.data = data;
     }
+
+    public RestResult<T> code(int code) {
+        this.code = code;
+        return this;
+    }
+
+    public RestResult<T> message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public RestResult<T> putTimestamp() {
+        this.timestamp = Long.valueOf(System.currentTimeMillis());
+        return this;
+    }
+
+    public RestResult<T> data(T data) {
+        this.data = data;
+        return this;
+    }
 }

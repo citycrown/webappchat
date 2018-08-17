@@ -29,12 +29,18 @@
         <!-- 文件滚动策略根据%d{patter}中的“patter”而定，此处为每天产生一个文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 归档文件名“.zip或.gz结尾”,表示归档文件自动压缩 -->
-            <FileNamePattern>d:/springboot_log/bootdo/my_log%d{yyyyMMdd}.info.%i.log.zip</FileNamePattern>
+            <FileNamePattern>d:/springboot_log/bootdo/my_log%d{yyyyMMdd}.%i.info.log.zip</FileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>512MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>60</maxHistory>
         </rollingPolicy>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
 
     <!-- 日志级别若没显示定义，则继承最近的父logger（该logger需显示定义level,直到rootLogger）的日志级别-->

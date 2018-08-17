@@ -55,4 +55,16 @@ public class R extends HashMap<String, Object> {
 		System.out.println(value);
 		return this;
 	}
+
+	// 返回成功
+	public static <T>  RestResult<T> success(String message, T data){
+		RestResult restResult = (new RestResult()).code(ResultCodeEnum.OK.getCode()).data(data).putTimestamp().message(message);
+		return restResult;
+	}
+
+	// 执行错误
+	public static <T> RestResult<T> fail(int code, String message){
+		RestResult restResult = (new RestResult()).code(code).putTimestamp().message(message);
+		return restResult;
+	}
 }

@@ -7,6 +7,10 @@ import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
 import com.bootdo.common.utils.RestResult;
 import com.bootdo.shop.domain.TGoodsDO;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,11 +39,7 @@ public class AdvertController {
     @RequestMapping(value = "/test",method = RequestMethod.GET)
     public RestResult<AdvertDO> test(){
         AdvertDO advertDO = advertService.getById(1L);
-
-        RestResult restResult = new RestResult();
-        restResult.setCode(200);
-        restResult.setData(advertDO);
-        return restResult;
+        return R.success("执行成功", advertDO);
     }
 
     @ResponseBody
@@ -60,14 +60,20 @@ public class AdvertController {
 
     @ResponseBody
     @GetMapping("/list")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "请求处理成功"),
+            @ApiResponse(code = 400001, message = "缺少必要的请求参数")
+    })
+    @ApiImplicitParams(
+            @ApiImplicitParam(paramType = "query", dataType="string", name = "token", value = "访问凭证", required = true)
+    )
     //@RequiresPermissions("shop:tGoods:tGoods")
-    public R list(@RequestParam Map<String, Object> params){
+    public RestResult<PageUtils> list(@RequestParam Map<String, Object> params){
         //查询列表数据
         Query query = new Query(params);
         List<AdvertDO> tGoodsList = advertService.list(query);
         int total = advertService.count(query);
         PageUtils pageUtils = new PageUtils(tGoodsList, total);
-        return R.ok().put("data", pageUtils);
-        //return pageUtils;
+        return R.success("成功", pageUtils);
     }
 }
