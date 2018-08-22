@@ -26,7 +26,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bocom.gzxf.jcsj.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.bootdo"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -35,7 +35,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("BOOT DO 基础数据API说明文档")
                 .description("2018.11.9上线版本")
-                .termsOfServiceUrl("http://mindao.com.cn")
+                .termsOfServiceUrl("http://www.baidu.com")
                 .contact("布谷开发部")
                 .version("1.0")
                 .build();

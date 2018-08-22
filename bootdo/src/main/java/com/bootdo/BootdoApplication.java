@@ -10,11 +10,13 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableTransactionManagement
 @ServletComponentScan
 @MapperScan("com.bootdo.*.dao")
 @SpringBootApplication
+@EnableSwagger2
 public class BootdoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BootdoApplication.class, args);

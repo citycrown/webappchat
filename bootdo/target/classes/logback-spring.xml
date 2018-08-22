@@ -11,9 +11,17 @@
     <!-- 控制台 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are by default assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
-        <encoder>
-            <pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %highlight(%-5level) --- [%thread] %logger{36} - %msg%n</pattern>
-        </encoder>
+        <springProfile name="dev">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %highlight(%-5level) ---> [%thread] %logger{36} - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+        <springProfile name="pro">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %highlight(%-5level) --- [%thread] %logger{36} - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+
     </appender>
 
     <!-- INFO -->
